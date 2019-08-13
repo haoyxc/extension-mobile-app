@@ -13,7 +13,7 @@ import {
 } from "native-base";
 import styles from "../style.js";
 
-class SideBar extends Component {
+export default class SideBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
