@@ -21,4 +21,11 @@ class SideBar extends Component {
       shadowRadius: 4
     };
   }
+  render() {
+    return (
+      <Container>
+        <Content bounces={false} />
+      </Container>
+    );
+  }
 }
