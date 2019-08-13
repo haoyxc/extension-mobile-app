@@ -12,5 +12,9 @@ export default StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  login: {
+    marginTop: 20,
+    flex: 1
   }
 });
