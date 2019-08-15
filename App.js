@@ -1,10 +1,11 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import { LoginScreen } from "./screens";
+import { LoginScreen, StatsAllScreen } from "./screens";
 import { SCREENS } from "./constants";
 
 const Navigator = createStackNavigator(
   {
-    Login: LoginScreen
+    Login: LoginScreen,
+    StatsAll: StatsAllScreen
   },
   { initialRouteName: SCREENS.LOGIN }
 );
