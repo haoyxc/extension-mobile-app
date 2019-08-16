@@ -14,7 +14,7 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   login: {
-    marginTop: 20,
+    marginTop: 0,
     flex: 1
   }
 });
