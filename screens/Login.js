@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { useState, useEffect } from "react";
+import { AsyncStorage, View, Text, TextInput, TouchableOpacity } from "react-native";
 import styles from "./style/style.js";
 import { SCREENS } from "../constants";
 import axios from "axios";
@@ -11,7 +11,24 @@ function Login(props) {
   const { navigation } = props;
 
   const [id, setId] = useState("");
-  function loadUser(props) {}
+  function loadUser(props) {
+    AsyncStorage.getItem("userId")
+      .then(result => {
+        // let parsed = JSON.parse(result);
+        // console.log("STORAGE RES", result, parsed);
+        setId(parsed);
+        login();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  useEffect(() => {
+    loadUser();
+    // return () => {
+    //   cleanup
+    // };
+  }, []);
   async function login() {
     // navigation.navigate(SCREENS.STATSALL);
     //implement login function here
@@ -30,6 +47,8 @@ function Login(props) {
         console.log("not successful");
       } else {
         navigation.navigate(SCREENS.STATSALL);
+        AsyncStorage.setItem("userId", id);
+        console.log("sotrage!");
       }
     } catch (e) {
       console.log(e);

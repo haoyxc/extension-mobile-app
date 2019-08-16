@@ -1,4 +1,16 @@
 import { StyleSheet } from "react-native";
+const colors = {
+  //teal ish
+  colorPrimary: "#85ddd1",
+  //purple ish
+  colorSecondary: "d3c0f9",
+  //green
+  colorHelper1: "d7e7a9",
+  //pink
+  colorHelper2: "fdbccf",
+  //red
+  colorHelper3: "f99a9c"
+};
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -32,13 +44,13 @@ export default StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     borderWidth: 0.5,
-    borderColor: "#89AEB2"
+    borderColor: color.colorSecondary
   },
   buttonBlue: {
     backgroundColor: "#0074D9"
   },
   buttonPrimaryColor: {
-    backgroundColor: "#97f2f3"
+    backgroundColor: colors.primaryColor
   },
   buttonLabel: {
     textAlign: "center",

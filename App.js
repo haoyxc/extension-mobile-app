@@ -8,7 +8,12 @@ const Navigator = createStackNavigator(
     StatsAll: StatsAllScreen,
     Insights: InsightsScreen
   },
-  { initialRouteName: SCREENS.LOGIN }
+  {
+    initialRouteName: SCREENS.LOGIN,
+    navigationOptions: {
+      headerVisible: false
+    }
+  }
 );
 
 export default createAppContainer(Navigator);
