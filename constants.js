@@ -1,4 +1,5 @@
 export const SCREENS = {
   LOGIN: "Login",
-  STATSALL: "StatsAll"
+  STATSALL: "StatsAll",
+  INSIGHTS: "Insights"
 };
