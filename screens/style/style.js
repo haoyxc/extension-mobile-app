@@ -14,6 +14,21 @@ export default StyleSheet.create({
     // marginTop: 50,
     alignItems: "center",
     backgroundColor: "#F5FCFF"
+    // marginTop: 200
+  },
+  containerPieChart: {
+    // flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // backgroundColor: "#CC9933",
+    height: 350,
+    width: 350
+    // marginTop: 200
+  },
+  containerText: {
+    marginBottom: 20,
+    fontSize: 15
+    // fontFamily: "sans-serif"
   },
   textBig: {
     fontSize: 20,

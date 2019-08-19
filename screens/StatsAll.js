@@ -3,12 +3,14 @@ import { useState } from "react";
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from "react-native";
 import PieChart from "./components/PieChart";
 import Pie from "react-native-pie";
+import styles from "./style/style";
 
 export default function StatsAll() {
   // const screenWidth = Dimensions.get("window");
 
   return (
-    <View>
+    <View style={styles.containerStats}>
+      <Text style={styles.containerText}>Your stats for the today: </Text>
       <PieChart />
     </View>
     // <PieChart
