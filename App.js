@@ -10,9 +10,10 @@ const Navigator = createStackNavigator(
   },
   {
     initialRouteName: SCREENS.LOGIN,
-    navigationOptions: {
-      headerVisible: false
-    }
+    headerMode: "none"
+    // navigationOptions: {
+    //   headerVisible: false
+    // }
   }
 );
 

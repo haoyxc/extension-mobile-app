@@ -5,19 +5,23 @@ import styles from "./style/style.js";
 import { SCREENS } from "../constants";
 import axios from "axios";
 
-const base_url = "http://fe9642ab.ngrok.io";
+const base_url = "http://tranquil-wildwood-15780.herokuapp.com";
 
 function Login(props) {
   const { navigation } = props;
 
   const [id, setId] = useState("");
-  function loadUser(props) {
+  function loadUser() {
     AsyncStorage.getItem("userId")
       .then(result => {
-        // let parsed = JSON.parse(result);
-        // console.log("STORAGE RES", result, parsed);
-        setId(parsed);
-        login();
+        console.log(result, id);
+        let parsed = JSON.parse(result);
+
+        //whys does this not update!!! result and parsed aren't the same??
+        console.log("STORAGE RES", result, parsed);
+        setId(result);
+        //ok so this works??
+        login(result);
       })
       .catch(err => {
         console.log(err);
@@ -29,9 +33,8 @@ function Login(props) {
     //   cleanup
     // };
   }, []);
-  async function login() {
+  async function login(id = id) {
     // navigation.navigate(SCREENS.STATSALL);
-    //implement login function here
     try {
       let response = await axios.post(
         base_url + "/login",
@@ -46,8 +49,10 @@ function Login(props) {
       if (!data.success) {
         console.log("not successful");
       } else {
-        navigation.navigate(SCREENS.STATSALL);
         AsyncStorage.setItem("userId", id);
+        console.log("NEW", id);
+        navigation.navigate(SCREENS.STATSALL);
+
         console.log("sotrage!");
       }
     } catch (e) {
