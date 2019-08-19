@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
 import styles from "./style/style";
-export default function Insights() {
+
+export default function StatsHistory() {
   return (
     <View style={styles.containerStats}>
-      <Text>INSIGHTS</Text>
+      <Text>History</Text>
     </View>
   );
 }

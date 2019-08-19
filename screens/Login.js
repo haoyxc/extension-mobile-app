@@ -14,14 +14,16 @@ function Login(props) {
   function loadUser() {
     AsyncStorage.getItem("userId")
       .then(result => {
-        console.log(result, id);
-        let parsed = JSON.parse(result);
+        if (result && result.length > 0) {
+          console.log(result, id);
+          let parsed = JSON.parse(result);
 
-        //whys does this not update!!! result and parsed aren't the same??
-        console.log("STORAGE RES", result, parsed);
-        setId(result);
-        //ok so this works??
-        login(result);
+          //whys does this not update!!! result and parsed aren't the same??
+          console.log("STORAGE RES", result, parsed);
+          setId(result);
+          //ok so this works??
+          login(result);
+        }
       })
       .catch(err => {
         console.log(err);
@@ -51,8 +53,10 @@ function Login(props) {
       } else {
         AsyncStorage.setItem("userId", id);
         console.log("NEW", id);
-        navigation.navigate(SCREENS.STATSALL);
-
+        navigation.navigate(SCREENS.INNERNAV, {
+          id: id
+        });
+        setId("");
         console.log("sotrage!");
       }
     } catch (e) {
@@ -68,9 +72,10 @@ function Login(props) {
         type="text"
         placeholder="enter your unique id"
         onChangeText={e => setId(e)}
+        value={id}
       />
       <TouchableOpacity
-        onPress={login}
+        onPress={e => login(id)}
         style={[styles.button, styles.buttonPrimaryColor]}
       >
         <Text style={styles.buttonLabel}>Tap to Login</Text>

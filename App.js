@@ -6,13 +6,12 @@ import InnerNav from "./InnerNav";
 const Navigator = createStackNavigator(
   {
     Login: LoginScreen,
-    InnerNav: InnerNav,
-    StatsAll: StatsAllScreen,
-    Insights: InsightsScreen
+    [SCREENS.INNERNAV]: InnerNav
+    // StatsAll: StatsAllScreen,
   },
   {
-    initialRouteName: SCREENS.LOGIN,
-    headerMode: "none"
+    initialRouteName: SCREENS.LOGIN
+    // headerMode: "none"
     // navigationOptions: {
     //   headerVisible: false
     // }

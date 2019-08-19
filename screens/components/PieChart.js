@@ -53,7 +53,7 @@ export default class PieChart2 extends React.PureComponent {
       //   "#d7e7a9"
     ];
     // console.log("OTHER", this.state.display);
-    console.log("DATA", this.state.data);
+    // console.log("DATA", this.state.data);
     const pieData = this.state.data
       // .filter(value => value > 0)
       .map((value, index) => ({

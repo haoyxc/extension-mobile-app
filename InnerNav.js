@@ -1,18 +1,20 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import { StatsAllScreen, InsightsScreen } from "./screens";
+import { StatsAllScreen, InsightsScreen, StatsHistoryScreen } from "./screens";
 import { SCREENS } from "./constants";
 
-const navigator = createMaterialBottomTabNavigator(
+export default createMaterialBottomTabNavigator(
   {
-    StatsAll: StatsAllScreen,
-    InsightsScreen: InsightsScreen
+    Dashboard: StatsAllScreen,
+    [SCREENS.INSIGHTS]: InsightsScreen,
+    [SCREENS.STATSHISTORY]: { screen: StatsHistoryScreen, label: "History!" }
   },
   {
-    initialRouteName: SCREENS.STATSALL
+    initialRouteName: "Dashboard",
+    activeColor: "#f0edf6",
+    inactiveColor: "#3e2465",
+    barStyle: { backgroundColor: "#85ddd1" }
   }
 );
 
-export default function InnerNav() {
-  return <div />;
-}
+// if (5 in { 5: 'hello'})

@@ -2,5 +2,6 @@ export const SCREENS = {
   LOGIN: "Login",
   STATSALL: "StatsAll",
   INSIGHTS: "Insights",
-  INNERNAV: "InnerNav"
+  INNERNAV: "InnerNav",
+  STATSHISTORY: "History"
 };
