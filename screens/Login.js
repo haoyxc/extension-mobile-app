@@ -18,7 +18,6 @@ function Login(props) {
           console.log(result, id);
           let parsed = JSON.parse(result);
 
-          //whys does this not update!!! result and parsed aren't the same??
           console.log("STORAGE RES", result, parsed);
           setId(result);
           //ok so this works??
@@ -36,7 +35,6 @@ function Login(props) {
     // };
   }, []);
   async function login(id = id) {
-    // navigation.navigate(SCREENS.STATSALL);
     try {
       let response = await axios.post(
         base_url + "/login",

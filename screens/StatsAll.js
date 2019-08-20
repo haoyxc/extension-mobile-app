@@ -12,6 +12,7 @@ import PieChart from "./components/PieChart";
 import styles from "./style/style";
 import axios from "axios";
 import SCREENS from "../constants";
+import psl from "psl";
 
 export default function StatsAll(props) {
   const { navigation } = props;
@@ -28,26 +29,28 @@ export default function StatsAll(props) {
   async function getStats() {
     // setId(userId);
     // console.log("in get stats");
+    if (!labels.length || !series.length) {
+      try {
+        let response = await axios(`${base_url}/allStats/${navigation.getParam("id")}`);
+        // console.log(id, "ID", navigation.getParam("id"));
+        let data = response.data;
+        // console.log("DATA!", data);
+        if (data.success) {
+          const stats = data.stats;
+          // console.log(stats, "STAT");
+          stats.forEach(item => console.log(item.time));
+          let allLabels = stats.map(item => item.url.slice(8)).slice(0, 10);
+          // console.log(allLabels);
 
-    try {
-      let response = await axios(`${base_url}/allStats/${navigation.getParam("id")}`);
-      // console.log(id, "ID", navigation.getParam("id"));
-      let data = response.data;
-      // console.log("DATA!", data);
-      if (data.success) {
-        const stats = data.stats;
-        // console.log(stats, "STAT");
-        stats.forEach(item => console.log(item.time));
-        let allLabels = stats.map(item => item.url).slice(0, 10);
-        // console.log(allLabels);
+          await setLabels(allLabels);
 
-        await setLabels(allLabels);
-
-        await setSeries(stats.map(item => Math.ceil(item.time / 60)).slice(0, 10));
+          await setSeries(stats.map(item => Math.ceil(item.time / 60)).slice(0, 10));
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
     }
+
     // console.log(labels, "LABELS");
     // console.log(series, "SERIES");
   }

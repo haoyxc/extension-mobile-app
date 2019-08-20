@@ -34,7 +34,7 @@ export default class PieChart2 extends React.PureComponent {
     this.setState({
       display: true,
       pos: new Animated.ValueXY({
-        x: e.nativeEvent.locationX - 50,
+        x: e.nativeEvent.locationX - 60,
         y: e.nativeEvent.locationY
       }),
       target: [this.props.userSeries[index], this.props.userLabels[index]]
@@ -79,8 +79,8 @@ export default class PieChart2 extends React.PureComponent {
               this.state.pos.getLayout(),
               {
                 backgroundColor: "#85ddd1",
-                width: 100,
-                height: 80,
+                width: 120,
+                height: 100,
                 position: "absolute",
                 // padding: 20
                 // borderRadius: 20,
@@ -91,9 +91,9 @@ export default class PieChart2 extends React.PureComponent {
               }
             ]}
           >
-            <Text style={{ margin: 10 }}>{`${this.state.target[0]} minutes on ${
-              this.state.target[1]
-            }`}</Text>
+            <Text style={{ margin: 5, marginTop: 10 }}>{`${
+              this.state.target[0]
+            } minutes on ${this.state.target[1]}`}</Text>
           </Animated.View>
         ) : null}
       </View>

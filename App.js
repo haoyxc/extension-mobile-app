@@ -1,5 +1,5 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import { LoginScreen, StatsAllScreen, InsightsScreen } from "./screens";
+import { LoginScreen } from "./screens";
 import { SCREENS } from "./constants";
 import InnerNav from "./InnerNav";
 
