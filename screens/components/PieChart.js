@@ -8,27 +8,12 @@ export default class PieChart2 extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      //   data: [50, 10, 40, 95, 85, 91, 35, 53, 24, 50],
       pos: new Animated.ValueXY(),
       display: false,
-      //   labels: [
-      //     "Facebook",
-      //     "Instagram",
-      //     "Youtube",
-      //     "GMail",
-      //     "Github",
-      //     "Google Docs",
-      //     "Leetcode",
-      //     "Amazon",
-      //     "Trashcan",
-      //     "Microsoft"
-      //   ],
       target: null
     };
   }
-  //   componentDidMount() {
-  //     console.log(this.props.userLabels, "LABELS!!");
-  //   }
+
   handlePress(e, index) {
     // console.log(this.state.labels[index]);
     this.setState({
@@ -53,11 +38,8 @@ export default class PieChart2 extends React.PureComponent {
       "#b2cefe",
       "#D3C0F9",
       "#fdbccf"
-      //   "#d7e7a9"
     ];
-    // console.log("OTHER", this.state.display);
-    // console.log("DATA", this.state.data);
-    // console.log(this.props.userLabels);
+
     const pieData = this.props.userSeries
       // .filter(value => value > 0)
       .map((value, index) => ({
@@ -68,10 +50,9 @@ export default class PieChart2 extends React.PureComponent {
         },
         key: `pie-${index}`
       }));
-    //have a view, position absolute to where the event is
+
     return (
       <View>
-        {/* <Text>pie chart </Text> */}
         <PieChart style={styles.containerPieChart} data={pieData} />
         {this.state.display ? (
           <Animated.View

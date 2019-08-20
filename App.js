@@ -7,7 +7,6 @@ const Navigator = createStackNavigator(
   {
     Login: LoginScreen,
     [SCREENS.INNERNAV]: InnerNav
-    // StatsAll: StatsAllScreen,
   },
   {
     initialRouteName: SCREENS.LOGIN
