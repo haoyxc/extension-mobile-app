@@ -8,35 +8,38 @@ export default class PieChart2 extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      data: [50, 10, 40, 95, 85, 91, 35, 53, 24, 50],
+      //   data: [50, 10, 40, 95, 85, 91, 35, 53, 24, 50],
       pos: new Animated.ValueXY(),
       display: false,
-      labels: [
-        "Facebook",
-        "Instagram",
-        "Youtube",
-        "GMail",
-        "Github",
-        "Google Docs",
-        "Leetcode",
-        "Amazon",
-        "Trashcan",
-        "Microsoft"
-      ],
+      //   labels: [
+      //     "Facebook",
+      //     "Instagram",
+      //     "Youtube",
+      //     "GMail",
+      //     "Github",
+      //     "Google Docs",
+      //     "Leetcode",
+      //     "Amazon",
+      //     "Trashcan",
+      //     "Microsoft"
+      //   ],
       target: null
     };
   }
+  //   componentDidMount() {
+  //     console.log(this.props.userLabels, "LABELS!!");
+  //   }
   handlePress(e, index) {
-    console.log(this.state.labels[index]);
+    // console.log(this.state.labels[index]);
     this.setState({
       display: true,
       pos: new Animated.ValueXY({
         x: e.nativeEvent.locationX - 50,
         y: e.nativeEvent.locationY
       }),
-      target: [this.state.data[index], this.state.labels[index]]
+      target: [this.props.userSeries[index], this.props.userLabels[index]]
     });
-    console.log(this.state.display);
+    // console.log(this.state.display);
   }
   render() {
     const colors = [
@@ -54,7 +57,8 @@ export default class PieChart2 extends React.PureComponent {
     ];
     // console.log("OTHER", this.state.display);
     // console.log("DATA", this.state.data);
-    const pieData = this.state.data
+    // console.log(this.props.userLabels);
+    const pieData = this.props.userSeries
       // .filter(value => value > 0)
       .map((value, index) => ({
         value,

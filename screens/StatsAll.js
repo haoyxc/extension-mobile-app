@@ -23,35 +23,33 @@ export default function StatsAll(props) {
   const base_url = "https://tranquil-wildwood-15780.herokuapp.com";
   useEffect(() => {
     getStats();
-  }, []);
+  }, [labels, series]);
 
   async function getStats() {
-    setId(userId);
+    // setId(userId);
     // console.log("in get stats");
 
     try {
       let response = await axios(`${base_url}/allStats/${navigation.getParam("id")}`);
-      console.log(id, "ID", navigation.getParam("id"));
+      // console.log(id, "ID", navigation.getParam("id"));
       let data = response.data;
-      console.log("DATA!", data);
+      // console.log("DATA!", data);
       if (data.success) {
         const stats = data.stats;
-        console.log(stats, "STAT");
-        let sites = [];
-        let times = [];
+        // console.log(stats, "STAT");
+        stats.forEach(item => console.log(item.time));
+        let allLabels = stats.map(item => item.url).slice(0, 10);
+        // console.log(allLabels);
 
-        stats.forEach(stat => {
-          sites.push(stat.url);
-          times.push(stat.time);
-        });
-        setLabels(sites);
-        setSeries(times);
+        await setLabels(allLabels);
+
+        await setSeries(stats.map(item => Math.ceil(item.time / 60)).slice(0, 10));
       }
     } catch (e) {
       console.log(e);
     }
-    console.log(labels, "LABELS");
-    console.log(series, "SERIES");
+    // console.log(labels, "LABELS");
+    // console.log(series, "SERIES");
   }
 
   return (
