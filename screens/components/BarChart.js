@@ -30,9 +30,9 @@ export default class BarChart2 extends Component {
       <View style={{ alignItems: "center" }}>
         <BarChart
           style={styles.containerPieChart}
-          data={[yestTotal, todayTotal]}
+          data={[yestTotal / 60, todayTotal / 60]}
           svg={{ fill }}
-          contentInset={{ top: 30, bottom: 30 }}
+          contentInset={{ top: 20, bottom: 20 }}
         >
           <Grid />
         </BarChart>

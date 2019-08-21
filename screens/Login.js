@@ -55,7 +55,7 @@ function Login(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.loginHeader}>Welcome to TrackR</Text>
+      <Text style={styles.loginHeader}>Welcome to Trackr</Text>
       <TextInput
         style={styles.formInput}
         type="text"
