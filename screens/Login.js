@@ -15,12 +15,7 @@ function Login(props) {
     AsyncStorage.getItem("userId")
       .then(result => {
         if (result && result.length > 0) {
-          console.log(result, id);
-          let parsed = JSON.parse(result);
-
-          console.log("STORAGE RES", result, parsed);
           setId(result);
-          //ok so this works??
           login(result);
         }
       })
@@ -30,9 +25,6 @@ function Login(props) {
   }
   useEffect(() => {
     loadUser();
-    // return () => {
-    //   cleanup
-    // };
   }, []);
   async function login(id = id) {
     try {
@@ -50,12 +42,11 @@ function Login(props) {
         console.log("not successful");
       } else {
         AsyncStorage.setItem("userId", id);
-        console.log("NEW", id);
+
         navigation.navigate(SCREENS.INNERNAV, {
           id: id
         });
         setId("");
-        console.log("sotrage!");
       }
     } catch (e) {
       console.log(e);
