@@ -1,4 +1,3 @@
-import React from "react";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { StatsAllScreen, InsightsScreen, StatsHistoryScreen } from "./screens";
 import { SCREENS } from "./constants";
@@ -16,5 +15,3 @@ export default createMaterialBottomTabNavigator(
     barStyle: { backgroundColor: "#85ddd1" }
   }
 );
-
-// if (5 in { 5: 'hello'})

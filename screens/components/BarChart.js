@@ -16,8 +16,6 @@ export default class BarChart2 extends Component {
     todayTotal = this.props.todayTotal;
     yestTotal = this.props.yestTotal;
 
-    console.log(todayTotal, "BAR!");
-    console.log(yestTotal, "BAR");
     const fill = "#85ddd1";
     function percChange(yest, tod) {
       return Math.ceil((100 * (tod - yest)) / yest);
@@ -28,7 +26,6 @@ export default class BarChart2 extends Component {
     let perc = percChange(yestTotal, todayTotal);
     let min = minChange(yestTotal, todayTotal);
 
-    console.log(perc, "PER");
     return (
       <View>
         <BarChart

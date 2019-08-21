@@ -15,13 +15,10 @@ export default function Insights(props) {
   }, [todayTotal, yestTotal]);
 
   async function getStats() {
-    // setId(userId);
-    // console.log("in get stats");
     if (!todayTotal || !yestTotal) {
       try {
         let response = await axios(`${base_url}/todayStats/${navigation.getParam("id")}`);
         let dataToday = response.data;
-        // console.log(dataToday);
 
         let responseY = await axios(
           `${base_url}/yesterdayStats/${navigation.getParam("id")}`
@@ -31,12 +28,10 @@ export default function Insights(props) {
         if (dataToday.success && dataYest.success) {
           const statsToday = dataToday.stats;
           const statsYes = dataYest.stats;
-          // console.log(statsToday, statsYes);
           const today = statsToday.reduce((acc, item) => {
-            // console.log(item.time);
             return acc + item.time;
           }, 0);
-          // console.log("TDOA", today);
+
           setTodayTotal(
             statsToday.reduce((acc, item) => {
               return acc + item.time;
@@ -47,11 +42,6 @@ export default function Insights(props) {
               return acc + item.time;
             }, 0)
           );
-          // console.log(todayTotal, yestTotal);
-          // stats.sort((a, b) => b.time - a.time);
-          // await setLabels(stats.map(item => item.url).slice(0, 10));
-
-          // await setSeries(stats.map(item => Math.ceil(item.time / 60)).slice(0, 10));
         }
       } catch (e) {
         console.log(e);

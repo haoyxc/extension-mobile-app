@@ -3,8 +3,6 @@ import { View, Text } from "react-native";
 import PieChart from "./components/PieChart";
 import styles from "./style/style";
 import axios from "axios";
-import SCREENS from "../constants";
-import { getSupportedVideoFormats } from "expo/build/AR";
 
 export default function StatsHistory(props) {
   const { navigation } = props;
@@ -16,14 +14,10 @@ export default function StatsHistory(props) {
   }, [labels, series]);
 
   async function getStats() {
-    // setId(userId);
-    // console.log("in get stats");
     if (!labels.length || !series.length) {
       try {
         let response = await axios(`${base_url}/allStats/${navigation.getParam("id")}`);
-        // console.log(id, "ID", navigation.getParam("id"));
         let data = response.data;
-        // console.log(data, "DA");
 
         if (data.success) {
           const stats = data.stats;
