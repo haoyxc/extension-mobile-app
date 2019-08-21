@@ -25,9 +25,13 @@ export default StyleSheet.create({
     width: 350
     // marginTop: 200
   },
+  mostText: {
+    alignItems: "center",
+    marginTop: 30
+  },
   containerText: {
     marginBottom: 20,
-    fontSize: 15
+    fontSize: 20
     // fontFamily: "sans-serif"
   },
   textBig: {

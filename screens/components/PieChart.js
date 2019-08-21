@@ -45,12 +45,12 @@ export default class PieChart2 extends React.PureComponent {
       .map((value, index) => ({
         value,
         svg: {
-          fill: colors[index],
+          fill: colors[index % 10],
           onPress: e => this.handlePress(e, index)
         },
         key: `pie-${index}`
       }));
-
+    const most = this.props.userLabels[0];
     return (
       <View>
         <PieChart style={styles.containerPieChart} data={pieData} />
@@ -68,7 +68,8 @@ export default class PieChart2 extends React.PureComponent {
                 // border: "black",
                 borderRadius: 10,
                 borderWidth: 0.5,
-                borderColor: "#black"
+                borderColor: "#black",
+                zIndex: 3
               }
             ]}
           >
@@ -77,6 +78,7 @@ export default class PieChart2 extends React.PureComponent {
             } minutes on ${this.state.target[1]}`}</Text>
           </Animated.View>
         ) : null}
+        {most ? <Text style={styles.mostText}>Most used website: {most}</Text> : null}
       </View>
     );
   }

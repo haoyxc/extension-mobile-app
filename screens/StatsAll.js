@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   Button,
-  AsyncStorage
+  AsyncStorage,
+  Platform
 } from "react-native";
 import PieChart from "./components/PieChart";
 import styles from "./style/style";
@@ -16,7 +17,7 @@ import XDate from "../xdate";
 
 export default function StatsAll(props) {
   const { navigation } = props;
-  const [id, setId] = useState(null);
+  // const [id, setId] = useState(null);
   const [labels, setLabels] = useState([]);
   const [series, setSeries] = useState([]);
 
@@ -56,11 +57,13 @@ export default function StatsAll(props) {
 
       return (
         dayOfWeek[US_date.getDay() - 1] +
-        ", " +
+        //optional comma ", "
+        " " +
         monthName[US_date.getMonth()] +
         " " +
         US_date.getDate() +
-        ", " +
+        //optional comma
+        " " +
         US_date.getFullYear()
       );
     }
@@ -70,19 +73,12 @@ export default function StatsAll(props) {
     // console.log("in get stats");
     if (!labels.length || !series.length) {
       try {
-        let response = await axios(`${base_url}/allStats/${navigation.getParam("id")}`);
+        let response = await axios(`${base_url}/todayStats/${navigation.getParam("id")}`);
         // console.log(id, "ID", navigation.getParam("id"));
         let data = response.data;
         // console.log("DATA!", data);
         if (data.success) {
           const stats = data.stats;
-          // let dayArr = stats.filter(
-          //   item => item.date == new Date(new Date().toLocaleDateString())
-          // );
-          // console.log(new Date(new Date().toLocaleDateString()));
-          console.log("DATEX", new XDate());
-          console.log(getDateString(new Date()));
-          // stats.forEach(item => console.log(item.time));
 
           await setLabels(stats.map(item => item.url).slice(0, 10));
 
@@ -92,15 +88,13 @@ export default function StatsAll(props) {
         console.log(e);
       }
     }
-
-    // console.log(labels, "LABELS");
-    // console.log(series, "SERIES");
   }
 
   return (
     <View style={styles.containerStats}>
-      <Text style={styles.containerText}>Your Cumulative Stats: </Text>
+      <Text style={styles.containerText}>Your Stats for Today: </Text>
       <PieChart userLabels={labels} userSeries={series} />
+      {/* <Text style={{ marginTop: 30 }}>Most used: </Text> */}
     </View>
   );
 }
