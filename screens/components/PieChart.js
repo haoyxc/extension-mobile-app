@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Animated } from "react-native";
+import { View, Text, Animated } from "react-native";
 import { PieChart } from "react-native-svg-charts";
 
 import styles from "../style/style";
@@ -15,7 +15,6 @@ export default class PieChart2 extends React.PureComponent {
   }
 
   handlePress(e, index) {
-    // console.log(this.state.labels[index]);
     this.setState({
       display: true,
       pos: new Animated.ValueXY({
@@ -24,7 +23,6 @@ export default class PieChart2 extends React.PureComponent {
       }),
       target: [this.props.userSeries[index], this.props.userLabels[index]]
     });
-    // console.log(this.state.display);
   }
   render() {
     const colors = [
@@ -40,19 +38,17 @@ export default class PieChart2 extends React.PureComponent {
       "#fdbccf"
     ];
 
-    const pieData = this.props.userSeries
-      // .filter(value => value > 0)
-      .map((value, index) => ({
-        value,
-        svg: {
-          fill: colors[index % 10],
-          onPress: e => this.handlePress(e, index)
-        },
-        key: `pie-${index}`
-      }));
+    const pieData = this.props.userSeries.map((value, index) => ({
+      value,
+      svg: {
+        fill: colors[index % 10],
+        onPress: e => this.handlePress(e, index)
+      },
+      key: `pie-${index}`
+    }));
     const most = this.props.userLabels[0];
     return (
-      <View>
+      <View style={{ alignItems: "center" }}>
         <PieChart style={styles.containerPieChart} data={pieData} />
         {this.state.display ? (
           <Animated.View
@@ -78,7 +74,11 @@ export default class PieChart2 extends React.PureComponent {
             } minutes on ${this.state.target[1]}`}</Text>
           </Animated.View>
         ) : null}
-        {most ? <Text style={styles.mostText}>Most used website: {most}</Text> : null}
+        {most ? (
+          <Text style={styles.mostText}>
+            Most used website: <Text style={{ fontStyle: "italic" }}>{most}</Text>
+          </Text>
+        ) : null}
       </View>
     );
   }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BarChart, Grid } from "react-native-svg-charts";
 import styles from "../style/style";
 import { View, Text } from "react-native";
-// import styles from "../style/style";
 
 export default class BarChart2 extends Component {
   constructor(props) {
@@ -25,9 +24,10 @@ export default class BarChart2 extends Component {
     }
     let perc = percChange(yestTotal, todayTotal);
     let min = minChange(yestTotal, todayTotal);
+    let textColor = perc >= 0 ? "red" : "green";
 
     return (
-      <View>
+      <View style={{ alignItems: "center" }}>
         <BarChart
           style={styles.containerPieChart}
           data={[yestTotal, todayTotal]}
@@ -37,8 +37,11 @@ export default class BarChart2 extends Component {
           <Grid />
         </BarChart>
         <Text style={styles.mostText}>
-          Usage today is a {Math.abs(perc)}%{/* , or {min} minute{" "} */}
-          {perc >= 0 ? " increase" : " decrease"} from yesterday
+          Usage today is a{" "}
+          <Text style={{ color: textColor, fontWeight: "bold" }}>
+            {Math.abs(perc)}%{perc >= 0 ? " increase" : " decrease"}
+          </Text>{" "}
+          from yesterday
         </Text>
       </View>
     );

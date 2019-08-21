@@ -69,6 +69,10 @@ function Login(props) {
       >
         <Text style={styles.buttonLabel}>Tap to Login</Text>
       </TouchableOpacity>
+      <Text style={styles.loginBlurb}>
+        PSST. If you don't know your unique ID, don't worry! Download our chrome extension
+        first.
+      </Text>
     </View>
   );
 }
