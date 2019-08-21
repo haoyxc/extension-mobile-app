@@ -34,7 +34,7 @@ export default function StatsHistory(props) {
 
   return (
     <View style={styles.containerStats}>
-      <Text style={styles.containerText}>Your Cumulative Stats: </Text>
+      <Text style={styles.containerText}>Your Cumulative Stats </Text>
       <PieChart userLabels={labels} userSeries={series} />
     </View>
   );

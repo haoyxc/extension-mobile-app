@@ -92,7 +92,7 @@ export default function StatsAll(props) {
 
   return (
     <View style={styles.containerStats}>
-      <Text style={styles.containerText}>Your Stats for Today: </Text>
+      <Text style={styles.containerText}>Your Stats for Today </Text>
       <PieChart userLabels={labels} userSeries={series} />
 
       {/* <Text style={{ marginTop: 30 }}>Most used: </Text> */}
